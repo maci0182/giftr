@@ -12,7 +12,17 @@
         },
         "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "ca.edumedia.maci0182.giftr"
+        },
+        "de.appplant.cordova.plugin.local-notification": {
+            "PACKAGE_NAME": "ca.edumedia.maci0182.giftr"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "ca.edumedia.maci0182.giftr"
+        },
+        "cordova-plugin-app-event": {
+            "PACKAGE_NAME": "ca.edumedia.maci0182.giftr"
+        }
+    }
 }

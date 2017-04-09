@@ -52,6 +52,12 @@ window.addEventListener('push', function(ev){
 });
 
 function onDeviceReady(){
+    // A variable to define my notifcation
+    var localNote = cordova.plugins.notification.local;
+
+    cordova.plugins.notification.local.registerPermission(function (granted) {
+    console.log('Permission has been granted: ' + granted);
+    });
      let buttonSave = document.getElementById("savebtn");
             buttonSave.addEventListener("click", savePerson);
             console.log("Clicked Save Button" + buttonSave);
@@ -84,7 +90,15 @@ function savePerson(){
             dob: saveDate,
             ideas: new Array()
         };
+    cordova.plugins.notification.local.schedule({
+    title: saveName,
+    text: "A new user has been added",
+    at: currentTime
+});
         
+    cordova.plugins.notification.local.on("click", function (notification) {
+    alert(notification.text);
+});
         listofPeople.push(person);
   }
     else{
@@ -155,10 +169,13 @@ function setLocalStorage(){
 }
 function getLocalStorage(){
     console.log("The key is " + localStorageKey);
-    let getItem = localStorage.getItem(localStorageKey);
-    console.log("Get " + getItem);
-    listofPeople = JSON.parse(getItem);
-    console.log("List of People from LocalStorage " + listofPeople);
+      if (!localStorage.getItem(localStorageKey)) {
+
+        
+    } else {
+        listofPeople = JSON.parse(localStorage.getItem(localStorageKey));
+        console.log("The People list is " + listofPeople);
+    }
 }
 function cancelModal(){
       var end = new CustomEvent('touchend', {
@@ -218,6 +235,16 @@ function saveGift(){
         cost: costSaved,
         id: currentTime
     }
+    
+    cordova.plugins.notification.local.schedule({
+    title: savedGifts,
+    text: "A new gift has been added",
+    at: currentTime
+});
+    
+    cordova.plugins.notification.local.on("click", function (notification) {
+    alert(notification.text);
+});
     console.log("Gift Idea " + giftIdea);
     
     listofIdea.push(giftIdea);

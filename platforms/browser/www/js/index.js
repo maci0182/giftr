@@ -36,12 +36,12 @@ window.addEventListener('push', function(ev){
             break;
             
         case "gifts":
-            let saveGift = document.getElementById("saveGiftButton");
-            saveGift.addEventListener("click", saveGift);
-            console.log("Save Gift button is clicked " + saveGift);
+            let saveGifts = document.getElementById("saveGiftButton");
+            saveGifts.addEventListener("click", saveGift);
+            console.log("Save Gift button is clicked " + saveGifts);
             
-            let cancelGift = document.getElementById("cancelGiftButton");
-            cancelGift.addEventListener("click", cancelGiftModal);
+            let cancelGifts = document.getElementById("cancelGiftButton");
+            cancelGifts.addEventListener("click", cancelGiftModal);
             determinePerson();
             break;
             // If nothing happenes from above switch statement then display list of people
